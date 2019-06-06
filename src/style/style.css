@@ -1,0 +1,29 @@
+.menu-item-wrapper {
+    padding: 0;
+    margin: 5px 10px;
+    user-select: none;
+    cursor: pointer;
+    border: none;
+  }
+
+.menu-wrapper{
+    margin:0;
+} 
+
+.menu-wrapper--inner:{
+    margin-left:0;
+}
+
+.horizontal-menu{
+    margin-left:1em;
+    margin-right:1em;
+}
+
+.menu-item-wrapper:first-child{
+    padding-left:0; 
+    margin-left:0;
+}
+.menu-item-wrapper:last-child{
+    padding-right:0;
+    margin-right: 0;
+}
