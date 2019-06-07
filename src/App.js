@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import Navbar from './components/Navbar';
 import './style/style.css';
-import MovieCarousal from './components/MovieCarousel';
-import MoviesHorizontalList from './components/MoviesHorizontalList';
+import AppRouter from './routers/AppRouter';
 
 class App extends Component{
 
    render(){
         return (
-            <div>
-                <Navbar/>
-                {/* <MovieCarousal/> */}
-                <MoviesHorizontalList/>
-            </div>
+            <AppRouter/>
             
         )
    }

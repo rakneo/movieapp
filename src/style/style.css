@@ -10,10 +10,6 @@
     margin:0;
 } 
 
-.menu-wrapper--inner:{
-    margin-left:0;
-}
-
 .horizontal-menu{
     margin-left:1em;
     margin-right:1em;
@@ -26,4 +22,27 @@
 .menu-item-wrapper:last-child{
     padding-right:0;
     margin-right: 0;
+}
+
+.card-overlay-div{
+    padding-bottom: 20px;
+	width: 180px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+
+}
+
+.storyline-div{
+    max-width:600px;
+    padding: 10%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+
+}
+
+.brand-name-link{
+    color: #fff;
+    text-decoration: none;
 }

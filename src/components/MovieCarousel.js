@@ -20,7 +20,7 @@ export default class MovieCarousal extends Component {
                 title={title}
                 style={{
                   height: 0,
-                  paddingTop: '35%',
+                  paddingTop: '30%',
                 }}
               />
               <CardContent>

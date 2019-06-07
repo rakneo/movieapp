@@ -8,6 +8,8 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { CssBaseline } from '@material-ui/core';
+import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -68,17 +70,48 @@ const styles = theme => ({
 });
 
 class NavBar extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      searchQuery:'',
+      searchRequest:false
+    }
+    this.searchInputChangeHandler.bind(this);
+    this.searchInputOnKeyPressHandler.bind(this);
+  }
+
+  
+
+  searchInputChangeHandler=(e)=>{
+    const searchQuery = e.target.value;
+    this.setState({searchQuery});
+  }
+
+  searchInputOnKeyPressHandler=(e)=>{
+    if(e.key === 'Enter' && this.state.searchRequest === false && this.state.searchQuery !== ''){
+      this.setState({searchRequest:true})
+    }
+  }
+
   render() {
     const { classes } = this.props;
+    const {searchQuery}=this.state
+    if(this.state.searchRequest === true){
+      return <Redirect to={"/s/"+searchQuery}/>
+  }
 
     return (
       <div className={classes.root}>
           <CssBaseline/>
         <AppBar position="static">
           <Toolbar>
+          <Link to='/' className="brand-name-link">
+          
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
              Movie App
             </Typography>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -89,6 +122,9 @@ class NavBar extends React.Component {
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                onKeyPress={this.searchInputOnKeyPressHandler}
+                onChange={this.searchInputChangeHandler}
+                value={this.state.searchQuery}
               />
             </div>
             <div className={classes.grow} />

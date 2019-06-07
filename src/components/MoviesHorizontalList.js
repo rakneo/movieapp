@@ -11,28 +11,10 @@ const list = [
     { name: 'item3' },
   ];
 
-  const styles = theme =>({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-      },
-      gridList: {
-        flexWrap: 'nowrap',
-        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-        transform: 'translateZ(0)',
-      },
-  });
   
   // One item component
   // selected prop will be passed
-  const MenuItem = ({text, selected}) => {
-    return <div
-      className={`menu-item ${selected ? 'active' : ''}`}
-      >{text}</div>;
-  };
+ 
   
   // All items component
   // Important! add unique key
@@ -40,7 +22,7 @@ const list = [
     list.map(el => {
       const {imdbID, Title, Year, Poster, imdbRating} = el;
   
-      return <MovieCardItem id={imdbID} title={Title} year={Year} rating={imdbRating} img={Poster}/>;
+      return <MovieCardItem id={imdbID} title={Title} year={Year} rating={imdbRating} img={Poster} key={imdbID}/>;
     });
   
   
@@ -52,9 +34,6 @@ const list = [
     );
   };
   
-  
-  const ArrowLeft = Arrow({ text: '<', className: 'arrow-prev' });
-  const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
   
   const selected = 'item1';
   
@@ -93,26 +72,17 @@ const list = [
               selected={selected}
               hideArrows={true}
               wheel={false}
-              transition={0.2}
-              innerWrapperClass="inner-wrapper"
+              transition={0.4}
               selected={4}
               scrollToSelected={true}
               onSelect={this.onSelect}
             />
           </Grid>
       </Grid>
-
-    {/* <GridList className={classes.gridList} cols={2.5}>
-        {data.map(movie => {
-             const {imdbID, Title, Year, Poster, imdbRating} = movie;
-  
-             return <MovieCardItem id={imdbID} title={Title} year={Year} rating={imdbRating} img={Poster}/>;
-        })}
-      </GridList> */}
         </div>
       );
     }
   }
 
-export default withStyles(styles)(MoviesHorizontalList);
+export default MoviesHorizontalList;
 
