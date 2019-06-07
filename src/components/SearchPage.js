@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-
-
-const styles = theme => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing.unit * 2,
-      color: theme.palette.text.secondary,
-    },
-    control: {
-      padding: theme.spacing.unit * 2,
-    },
-  });
-  
+import MovieSearchCard from './MovieSearchCard';
 
 class SearchPage extends Component{
     constructor(props){
@@ -23,8 +8,8 @@ class SearchPage extends Component{
         this.state = {
             searchQuery:this.props.match.params.searchQuery,
             responseRecieved:false,
-            items:null,
-            isLoaded:false
+            isLoaded:false,
+            items:[]
         }
     }
 
@@ -40,9 +25,6 @@ class SearchPage extends Component{
                 });
                 
               },
-              // Note: it's important to handle errors here
-              // instead of a catch() block so that we don't swallow
-              // exceptions from actual bugs in components.
               (error) => {
                 this.setState({
                   isLoaded: true,
@@ -53,6 +35,8 @@ class SearchPage extends Component{
     }
 
     render(){
+
+        const {items} = this.state;
         return(
         <Grid container className={""}>
             <Grid item xs={12}>
@@ -60,12 +44,13 @@ class SearchPage extends Component{
                     container
                     spacing={16}
                     alignItems="center"
-                    direction='column'
+                    direction='row'
                     justify="center"
                 >
-                
-
-                Hello World
+                    {items.map(item=>{
+                        const {Title, Year, imdbID, Type, Poster} = item;
+                        return <MovieSearchCard Title={Title} Year={Year} Type={Type} Poster={Poster} key={imdbID}/>
+                    })}
                 </Grid>
             </Grid>
         </Grid>

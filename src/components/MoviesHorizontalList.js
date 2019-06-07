@@ -5,19 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {data} from '../utils/MoviesModel';
 
-const list = [
-    { name: 'item1' },
-    { name: 'item2' },
-    { name: 'item3' },
-  ];
-
-  
-  // One item component
-  // selected prop will be passed
- 
-  
-  // All items component
-  // Important! add unique key
    const Menu = (list, selected) =>
     list.map(el => {
       const {imdbID, Title, Year, Poster, imdbRating} = el;
@@ -25,14 +12,6 @@ const list = [
       return <MovieCardItem id={imdbID} title={Title} year={Year} rating={imdbRating} img={Poster} key={imdbID}/>;
     });
   
-  
-  const Arrow = ({ text, className }) => {
-    return (
-      <div
-        className={className}
-      >{text}</div>
-    );
-  };
   
   
   const selected = 'item1';
@@ -50,6 +29,11 @@ const list = [
   
     onSelect = key => {
       this.setState({ selected: key });
+    }
+
+
+    componentWillUnmount(){
+      this.setState({})
     }
   
   

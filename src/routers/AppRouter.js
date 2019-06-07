@@ -11,9 +11,11 @@ function AppRouter(){
     return (
         <Router>
             <Navbar/>
+            <div>
             <Route exact path='/' component={HomePage}/>
-            <Route path='/s/:searchQuery' component={SearchPage}/>
+            <Route path='/:searchQuery/s' component={SearchPage}/>
             <Route path='/:imdbID/m' component={MovieDetailCard}/>
+            </div>
         </Router>
     )
 }

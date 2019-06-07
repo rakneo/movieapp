@@ -98,7 +98,7 @@ class NavBar extends React.Component {
     const { classes } = this.props;
     const {searchQuery}=this.state
     if(this.state.searchRequest === true){
-      return <Redirect to={"/s/"+searchQuery}/>
+      return <Redirect to={"/"+searchQuery+"/s"}/>
   }
 
     return (

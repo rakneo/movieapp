@@ -5,7 +5,6 @@ import MoviesHorizontalList from './MoviesHorizontalList';
 function HomePage(){
         return (
             <div>
-                
                 <MoviesHorizontalList/>
             </div>
             
